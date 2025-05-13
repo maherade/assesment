@@ -1,6 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async{
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -54,13 +60,8 @@ class _ItemsPageState extends State<ItemsPage> {
                       shape: BoxShape.circle,
                       color: const Color(0xFF171717),
                     ),
-                    child: Image(
-                      height: MediaQuery.of(context).size.height * 0.045,
-                      image: NetworkImage(
-                        'https://firebasestorage.googleapis.com/v0/b/gas-app-e12b7.appspot.com/o/sliders.png?alt=media&token=93033c85-6c68-4fe3-91d0-e1685e7ade2d',
-                      ),
+                    child: Image.asset('assets/images/sliders.png',color: Colors.white,),
                     ),
-                  ),
                   SizedBox(width: MediaQuery.of(context).size.height * 0.02),
                   MediaQuery.sizeOf(context).width <= 500?Container():  AddNewItemButton(),
                 ],
@@ -136,11 +137,9 @@ class _TopNavBarState extends State<TopNavBar> {
           SizedBox(width: MediaQuery.of(context).size.height * 0.01),
 
           // Logo
-          Image(
+          Image.asset(
             height: MediaQuery.of(context).size.height * 0.05,
-            image: NetworkImage(
-              'https://firebasestorage.googleapis.com/v0/b/gas-app-e12b7.appspot.com/o/logo.png?alt=media&token=6bb39240-c032-4b36-bd05-b69da5b91ea6',
-            ),
+              'assets/images/logo.png',
           ),
 
           Spacer(),
@@ -191,20 +190,14 @@ class _TopNavBarState extends State<TopNavBar> {
 
 
           SizedBox(width: MediaQuery.of(context).size.height * 0.02),
-          Image(
+          Icon(Icons.settings,
             color: Colors.white,
-            height: MediaQuery.of(context).size.height * 0.035,
-            image: NetworkImage(
-              'https://firebasestorage.googleapis.com/v0/b/gas-app-e12b7.appspot.com/o/Icons.png?alt=media&token=59e510cb-5f21-4534-8ec2-8ea51e51af48',
-            ),
+            size: MediaQuery.of(context).size.height * 0.035,
           ),
           SizedBox(width: MediaQuery.of(context).size.height * 0.04),
-          Image(
+          Icon(Icons.notifications_none_rounded,
             color: Colors.white,
-            height: MediaQuery.of(context).size.height * 0.035,
-            image: NetworkImage(
-              'https://firebasestorage.googleapis.com/v0/b/gas-app-e12b7.appspot.com/o/Icons%20(1).png?alt=media&token=346439ab-1ff4-43e8-a4ab-5f9c473eaad5',
-            ),
+            size: MediaQuery.of(context).size.height * 0.035,
           ),
           SizedBox(width: MediaQuery.of(context).size.height * 0.02),
           VerticalDivider(
@@ -212,11 +205,9 @@ class _TopNavBarState extends State<TopNavBar> {
             thickness: 1,
           ),
           SizedBox(width: MediaQuery.of(context).size.height * 0.02),
-          Image(
+          Image.asset(
             height: MediaQuery.of(context).size.height * 0.045,
-            image: NetworkImage(
-              'https://firebasestorage.googleapis.com/v0/b/gas-app-e12b7.appspot.com/o/Frame%2077134.png?alt=media&token=8c21e50d-10b2-434b-8e18-61d64f177976',
-            ),
+            'assets/images/user.png',
           ),
           SizedBox(width: MediaQuery.of(context).size.height * 0.02),
           MediaQuery.sizeOf(context).width <= 500?SizedBox() : Row(
@@ -390,24 +381,24 @@ class ItemCard extends StatelessWidget {
                       width: 80,
                       height: 24,
                       child: Stack(
-                        children: const [
+                        children: [
                           Positioned(
                             left: 0,
                             child: CircleAvatar(
                                 radius: 12,
-                                backgroundImage: NetworkImage(
-                                    'https://randomuser.me/api/portraits/women/1.jpg')),
+                                child:  Image.asset(
+                                    'assets/images/woman.png')),
                           ),
-                          SizedBox(width: 4),
-                          Positioned(
+                          const SizedBox(width: 4),
+                            Positioned(
                             left: 16,
                             child: CircleAvatar(
                                 radius: 12,
-                                backgroundImage: NetworkImage(
-                                    'https://randomuser.me/api/portraits/men/2.jpg')),
+                                child:  Image.asset(
+                                    'assets/images/man.png')),
                           ),
-                          SizedBox(width: 4),
-                          Positioned(
+                          const SizedBox(width: 4),
+                          const Positioned(
                             left: 32,
                             child: CircleAvatar(
                               radius: 12,
